@@ -27,6 +27,13 @@ export const TransactionsTable = styled.table`
       border-bottom-right-radius: 6px;
     }
   }
+
+  h2 {
+    position: absolute;
+    top: 50%;
+    left: 45%;
+    font-size: 1rem;
+  }
 `;
 
 interface PriceHightLightProps {

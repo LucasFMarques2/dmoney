@@ -4,6 +4,7 @@ import { Summary } from "../../components/Summary";
 import { SearchForm } from "./components/SearchForm";
 import { PriceHightLight, TransactionsContainer, TransactionsTable } from "./style";
 import { TransactionContext } from "../../context/TransactionsContext";
+import { dateFormatter, priceFormatter } from "../../utils/formatter";
 
 
 export function Transactions() {
@@ -18,19 +19,23 @@ export function Transactions() {
         <SearchForm />
         <TransactionsTable>
           <tbody>
-            {transactions.map(transaction => {
+            {transactions.length > 0 ?(transactions.map(transaction => {
               return(
                 <tr key={transaction.id}>
                 <td width="50%">{transaction.description}</td>
                 <td>
-                  <PriceHightLight $variant={transaction.type}>{transaction.price}</PriceHightLight>
+                  <PriceHightLight $variant={transaction.type}>
+                    {transaction.type === 'outcome' && '- '}
+                    {priceFormatter.format(transaction.price)}
+                  </PriceHightLight>
                 </td>
                 <td>{transaction.category}</td>
-                <td>{transaction.createdAt}</td>
+                <td>{dateFormatter.format(new Date(transaction.createdAt))}</td>
               </tr>
               )
-            })}
-           
+            })) : (
+              <h2>Sem registro no momento</h2>
+            )}
           </tbody>
         </TransactionsTable>
       </TransactionsContainer>
