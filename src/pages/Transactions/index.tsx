@@ -17,9 +17,10 @@ export function Transactions() {
       <Summary />
       <TransactionsContainer>
         <SearchForm />
+        {transactions.length === 0 &&   <h2>Sem registro no momento</h2>}
         <TransactionsTable>
           <tbody>
-            {transactions.length > 0 ?(transactions.map(transaction => {
+            {transactions.map(transaction => {
               return(
                 <tr key={transaction.id}>
                 <td width="50%">{transaction.description}</td>
@@ -33,9 +34,8 @@ export function Transactions() {
                 <td>{dateFormatter.format(new Date(transaction.createdAt))}</td>
               </tr>
               )
-            })) : (
-              <h2>Sem registro no momento</h2>
-            )}
+             })
+            }
           </tbody>
         </TransactionsTable>
       </TransactionsContainer>

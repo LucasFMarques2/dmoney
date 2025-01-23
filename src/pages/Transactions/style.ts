@@ -5,6 +5,12 @@ export const TransactionsContainer = styled.main`
   max-width: 1180px;
   margin: 4rem auto 0;
   padding: 0 1.5rem;
+
+  h2 {
+    font-size: 1rem;
+    margin-top: 2rem;
+    text-align: center
+}
 `;
 
 export const TransactionsTable = styled.table`
@@ -28,12 +34,7 @@ export const TransactionsTable = styled.table`
     }
   }
 
-  h2 {
-    position: absolute;
-    top: 50%;
-    left: 45%;
-    font-size: 1rem;
-  }
+
 `;
 
 interface PriceHightLightProps {
